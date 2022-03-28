@@ -1,6 +1,6 @@
 body {
     display: flex;
-    height: 100vh;
+    height: 95vh;
     background-color: darkslateblue;
 }
 
@@ -10,9 +10,14 @@ div {
 }
 
 button {
-    flex: 1 1 auto;
+    flex: 1 1 0;
     margin: 3px;
     font-size: xx-large;
+    font-family: cursive, 'Times New Roman', Times, serif;
+    background-color: rgb(50, 50, 50);
+    color: rgb(175, 175, 175);
+    text-shadow: -2px -2px rgb(40, 40, 40);
+    border: 5px inset gray;
 }
 
 .content {
@@ -26,8 +31,12 @@ button {
     flex: 0 0 auto;
     box-shadow: 5px 5px 25px black;
     border-radius: 24px;
-    width: 75%;
+    width: 50%;
     height: 75%;
+    /*
+    width: 350px;
+    height: 500px;
+    */
 }
 
 .calculator {
@@ -49,6 +58,7 @@ button {
 
 .lcd {
     background-color: green;
+    height: 100px;
 }
 
 .buttons {
@@ -58,7 +68,7 @@ button {
 }
 
 .group.left{
-    flex: 4 1 auto;
+    flex: 3 1 auto;
     flex-direction: column;
 }
 
@@ -84,20 +94,35 @@ button {
     flex-direction: column;
 }
 
+.group.top.right {
+    flex: 3 1 auto;
+}
+
+.group.bottom.right {
+    flex: 1 1 auto;
+}
+
+.button.number {
+    background-color: indigo;
+}
+
 #n0 {
     flex: 2 1 auto;
+    border-radius: 0 0 0 15px;
 }
 
 #plus {
-    flex: 2 1 auto;
+    flex: 1.15 1 auto;
 }
 
+
 #minus {
-    flex: 2 1 auto;
+    flex: 1 1 auto;
 }
 
 #equal {
-    flex: 1 1 auto;
+    border-radius: 0 0 15px 0;
+    background-color: rgb(70, 70, 70);
 }
 
 ** {
