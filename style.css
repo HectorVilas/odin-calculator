@@ -4,12 +4,16 @@ body {
     background-color: darkslateblue;
 }
 
-div,
-button {
+div {
     display: flex;
     flex: 1 1 auto;
 }
 
+button {
+    flex: 1 1 auto;
+    margin: 3px;
+    font-size: xx-large;
+}
 
 .content {
     width: 100%;
@@ -54,16 +58,16 @@ button {
 }
 
 .group.left{
+    flex: 4 1 auto;
     flex-direction: column;
 }
 
 .group.top.left {
-    background-color: red;
     flex-direction: row;
 }
 
 .group.center.left {
-    background-color: red;
+    flex: 15 1 auto;
 }
 
 .numbers.top,
@@ -73,7 +77,6 @@ button {
 }
 
 .group.bottom.left {
-    background-color: red;
     flex-direction: row;
 }
 
@@ -81,16 +84,20 @@ button {
     flex-direction: column;
 }
 
-.group.top.right {
-    background-color: blue;
+#n0 {
+    flex: 2 1 auto;
 }
 
-.group.center.right {
-    background-color: blue;
+#plus {
+    flex: 2 1 auto;
 }
 
-.group.bottom.right {
-    background-color: blue;
+#minus {
+    flex: 2 1 auto;
+}
+
+#equal {
+    flex: 1 1 auto;
 }
 
 ** {
