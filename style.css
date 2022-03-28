@@ -1,0 +1,99 @@
+body {
+    display: flex;
+    height: 100vh;
+    background-color: darkslateblue;
+}
+
+div,
+button {
+    display: flex;
+    flex: 1 1 auto;
+}
+
+
+.content {
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.shadow {
+    flex: 0 0 auto;
+    box-shadow: 5px 5px 25px black;
+    border-radius: 24px;
+    width: 75%;
+    height: 75%;
+}
+
+.calculator {
+    flex: 1 1 auto;
+    flex-direction: column;
+    background-color: rgb(50, 50, 50);
+    box-shadow: inset -2px -2px 10px black;
+    border-radius: 24px;
+    padding: 20px;
+    gap: 20px;
+}
+
+.display {
+    border: 5px groove rgb(50, 50, 50);
+    border-radius: 20px 20px 0 0;
+    padding: 20px;
+    background-color: rgb(70, 70, 70);
+}
+
+.lcd {
+    background-color: green;
+}
+
+.buttons {
+    flex: 3 1 auto;
+    border: 5px inset rgb(40, 40, 40);
+    border-radius: 0 0 20px 20px;
+}
+
+.group.left{
+    flex-direction: column;
+}
+
+.group.top.left {
+    background-color: red;
+    flex-direction: row;
+}
+
+.group.center.left {
+    background-color: red;
+}
+
+.numbers.top,
+.numbers.center,
+.numbers.bottom {
+    flex-direction: row;
+}
+
+.group.bottom.left {
+    background-color: red;
+    flex-direction: row;
+}
+
+.group.right {
+    flex-direction: column;
+}
+
+.group.top.right {
+    background-color: blue;
+}
+
+.group.center.right {
+    background-color: blue;
+}
+
+.group.bottom.right {
+    background-color: blue;
+}
+
+** {
+    border: 1px dotted whitesmoke;
+    margin: 3px;
+}
