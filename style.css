@@ -1,3 +1,5 @@
+/*----- GENERAL CONFIG -----*/
+
 body {
     display: flex;
     height: 95vh;
@@ -27,12 +29,13 @@ button {
     justify-content: center;
 }
 
+/*----- CALCULATOR -----*/
 .shadow {
     flex: 0 0 auto;
     box-shadow: 5px 5px 25px black;
     border-radius: 24px;
-    width: 600px;
-    height: 700px;
+    width: 700px;
+    height: 850px;
     /*
     width: 50%;
     height: 75%;
@@ -46,28 +49,25 @@ button {
     box-shadow: inset -2px -2px 10px black;
     border-radius: 24px;
     padding: 20px;
-    gap: 20px;
+    /*gap: 20px;*/
 }
 
 .display {
+    flex: 0 0 auto;
     border: 5px groove rgb(50, 50, 50);
     border-radius: 20px 20px 0 0;
     padding: 20px;
     background-color: rgb(70, 70, 70);
+    height: 170px;
 }
 
-/*-----LCD SCREEN-----*/
+/*----- LCD SCREEN -----*/
 
 .lcd {
     background-color: green;
     padding: 20px;
-    gap: 10px;
+    gap: 5px;
 }
-
-/*.digit {
-    border: 1px solid greenyellow;
-    margin: 1px;
-}*/
 
 .digit.left,
 .digit.right {
@@ -85,7 +85,7 @@ button {
     box-shadow: inset 2px 2px 1px rgb(0, 110,0 );
     background-color: rgb(0, 120,0 );
     flex: 0 0 auto;
-    height: 50px;
+    height: 45px;
     border-radius: 10px;
 }
 
@@ -98,10 +98,32 @@ button {
     background-color: rgb(0, 50,0 );
 }
 
-/*-----BUTTONS-----*/
+/*----- SHAMELESS LINK -----*/
+
+.link {
+    flex: 0 1 auto;
+    font-family: 'Times New Roman', Times, serif;
+    color: gray;
+    font-weight: 900;
+    justify-content: end;
+    height: 50px;
+}
+
+a:link, a:visited {
+    color: slategray;
+}
+
+a:hover {
+    color: gainsboro;
+}
+
+.icon {
+    width: 12px;
+}
+
+/*----- BUTTONS -----*/
 
 .buttons {
-    /*flex: 3 1 auto;*/
     border: 5px inset rgb(40, 40, 40);
     border-radius: 0 0 20px 20px;
 }
@@ -164,7 +186,8 @@ button {
     background-color: rgb(70, 70, 70);
 }
 
+/*----- just for testing -----*/
 ** {
     border: 1px dotted whitesmoke;
-    margin: 3px;
+    margin: 1px;
 }
