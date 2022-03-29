@@ -19,3 +19,7 @@ The client would be mad if they heard how I wasted time on it, but there's no cl
 I copied and pasted the digit code as placeholder, just to see how it looks before making it appear using Javascript.
 
 The original idea is to append a `div` with the digit design for every single digit, and make the digit's stick change color like in a regular calculator. We will see how it plays out.
+
+This is how it looks for now:
+
+![preview](./images/calc01.png)
