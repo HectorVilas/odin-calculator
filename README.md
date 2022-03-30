@@ -33,4 +33,4 @@ It was hard, but now the "calculator logic" is working! The equal button does no
 
 I also added an event listener to show on console the two operands and the operator on every single click, so it made debugging a lot easier. Something was off, but thanks to Firefox's debugging tools I managed to discover why "2 x 2 = 8" using breakpoints.
 
-The next step is to add function to the rest of the numbers, trying to no repeat myself. Also the actual code is a bit of a mess, needs some cleaning.
+The next step is to add function to the rest of the numbers, trying to no repeat myself. Also the actual code is a bit of a mess, needs some cleaning. The display is still a placeholder, the last step on this project will be making it functional.
