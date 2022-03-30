@@ -27,3 +27,10 @@ This is how it looks for now:
 ## update 2
 Now you can use the numbers on the page or in your keyboard to write on screen, but only text. The fancy lcd style will be disabled for now.
 The buttons have a `hover` property so you can see what are about to click.
+
+## update 3
+It was hard, but now the "calculator logic" is working! The equal button does nothing until it have two operands and an operator (just multiplication for now). You can also get a result pressing the operator again, get the result and store it as the first operator, so you can write the second one and keep calculating without the need of writing again everything.
+
+I also added an event listener to show on console the two operands and the operator on every single click, so it made debugging a lot easier. Something was off, but thanks to Firefox's debugging tools I managed to discover why "2 x 2 = 8" using breakpoints.
+
+The next step is to add function to the rest of the numbers, trying to no repeat myself. Also the actual code is a bit of a mess, needs some cleaning.
