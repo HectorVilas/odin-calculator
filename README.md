@@ -23,3 +23,7 @@ The original idea is to append a `div` with the digit design for every single di
 This is how it looks for now:
 
 ![preview](./images/calc01.png)
+
+## update 2
+Now you can use the numbers on the page or in your keyboard to write on screen, but only text. The fancy lcd style will be disabled for now.
+The buttons have a `hover` property so you can see what are about to click.
