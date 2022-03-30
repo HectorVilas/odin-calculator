@@ -1,18 +1,12 @@
-let numbersOnScreen = "";
+let numbersOnScreen = undefined;
+let operand = undefined;
+let operator = undefined;
+let mathDone = false;
 const lcd = document.querySelector(".lcd");
 
 //drawScreen(""); //cleaning screen before starting
 
-const btnDelete = document.querySelector("#delete");
-btnDelete.addEventListener("click", () => {
-    numbersOnScreen = "";
-    drawScreen("");
-});
-const btnMultiply = document.querySelector("#multiply");
-const btnComma = document.querySelector("#comma");
-const btnMinus = document.querySelector("#minus");
-const btnPlus = document.querySelector("#plus");
-const btnEqual = document.querySelector("#equal");
+/*-----numbers-----*/
 //so much repetition! must find a way to "D.R.Y."
 const btnN0 = document.querySelector("#n0");
 btnN0.addEventListener("click", () => drawScreen("0"));
@@ -35,6 +29,38 @@ btnN8.addEventListener("click", () => drawScreen("8"));
 const btnN9 = document.querySelector("#n9");
 btnN9.addEventListener("click", () => drawScreen("9"));
 
+/*-----operators-----*/
+const btnDelete = document.querySelector("#delete");
+btnDelete.addEventListener("click", () => {
+    drawScreen("");
+    numbersOnScreen = undefined;
+    operand = undefined;
+    operator = undefined;
+});
+const btnMultiply = document.querySelector("#multiply");
+btnMultiply.addEventListener("click", () => {
+    if(numbersOnScreen === undefined){
+        return;
+    } else if(operand === undefined){
+        operand = numbersOnScreen;
+        numbersOnScreen = undefined;
+        operator = "*";
+    } else {
+        calculate()
+        operand = numbersOnScreen;
+        numbersOnScreen = undefined;
+        operator = "*"; //check if needed
+    }
+});
+const btnComma = document.querySelector("#comma");
+const btnMinus = document.querySelector("#minus");
+const btnPlus = document.querySelector("#plus");
+const btnEqual = document.querySelector("#equal");
+btnEqual.addEventListener("click", () => {
+    calculate()
+});
+
+
 //using the keyboard
 window.addEventListener("keypress", (e) => {
     let numbers = "0123456789";
@@ -43,7 +69,7 @@ window.addEventListener("keypress", (e) => {
     };
 });
 
-//main fuction to draw screen
+/*-----main fuction to draw screen-----*/
 function drawScreen(val){
     clearScreen();
     writeScreen(val);
@@ -51,14 +77,49 @@ function drawScreen(val){
 
 function clearScreen(){
     while(lcd.hasChildNodes()){
-        lcd.removeChild(lcd.firstChild)
+        lcd.removeChild(lcd.firstChild);
     };
 };
 
 function writeScreen(val){
     let newText = document.createElement("div");
     newText.className = "numbers";
-    numbersOnScreen = numbersOnScreen+val;
+    if(numbersOnScreen === undefined){
+        numbersOnScreen = val;
+    } else if(mathDone){
+        mathDone = false;
+        operand = undefined;
+    } else {
+        numbersOnScreen = numbersOnScreen+val;
+    };
     newText.innerText = numbersOnScreen;
+    newText.style.fontSize = "50px";
     lcd.appendChild(newText);
 };
+
+function calculate(){
+    if(numbersOnScreen !== undefined && operand !== undefined && operator !== undefined){
+        let result;
+        switch(operator){
+            case "*":
+                result = parseInt(numbersOnScreen) * parseInt(operand);
+                break;
+            default:
+                break;
+        }
+        numbersOnScreen = result;
+        mathDone = true;
+        drawScreen(numbersOnScreen);
+        operator = undefined;
+        if(mathDone){
+            operand = result;
+        }
+    }
+}
+
+
+/*debugging*/
+window.addEventListener("click", () => {
+    console.clear()
+    console.log(numbersOnScreen + "\n" + operator + "\n" + operand + "\n" + mathDone);
+});
