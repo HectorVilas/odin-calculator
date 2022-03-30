@@ -47,7 +47,7 @@ div {
     border-radius: 20px 20px 0 0;
     padding: 20px;
     background-color: rgb(70, 70, 70);
-    height: 180px;
+    height: 150px;
 }
 
 /*----- LCD SCREEN -----*/
@@ -90,6 +90,10 @@ div {
 .stick.active {
     box-shadow: none;
     background-color: rgb(0, 50,0 );
+}
+
+.commas {
+    flex: 0 0 auto;
 }
 
 .comma-separator {
