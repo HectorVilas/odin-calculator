@@ -13,6 +13,7 @@ const btnComma = document.querySelector("#comma");
 const btnMinus = document.querySelector("#minus");
 const btnPlus = document.querySelector("#plus");
 const btnEqual = document.querySelector("#equal");
+//so much repetition! must find a way to "D.R.Y."
 const btnN0 = document.querySelector("#n0");
 btnN0.addEventListener("click", () => drawScreen("0"));
 const btnN1 = document.querySelector("#n1");

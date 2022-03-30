@@ -47,14 +47,19 @@ div {
     border-radius: 20px 20px 0 0;
     padding: 20px;
     background-color: rgb(70, 70, 70);
-    height: 170px;
+    height: 180px;
 }
 
 /*----- LCD SCREEN -----*/
 
 .lcd {
+    flex-direction: column;
     background-color: green;
-    padding: 20px;
+    padding: 10px;
+    
+}
+
+.digits {
     gap: 5px;
 }
 
@@ -85,6 +90,18 @@ div {
 .stick.active {
     box-shadow: none;
     background-color: rgb(0, 50,0 );
+}
+
+.comma-separator {
+    justify-content: right;
+}
+
+.comma {
+    flex: 0 0 auto;
+    width: 10px;
+    height: 10px;
+    background-color: rgb(0, 120,0 );
+    box-shadow: inset 2px 2px 1px rgb(0, 110,0 );
 }
 
 /*----- SHAMELESS LINK -----*/
@@ -184,6 +201,10 @@ button {
 #equal {
     border-radius: 0 0 15px 0;
     background-color: rgb(70, 70, 70);
+}
+
+#delete {
+    font-size: 40px;
 }
 
 .button:hover,
