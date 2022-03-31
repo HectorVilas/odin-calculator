@@ -61,8 +61,8 @@ function clearScreen(){
 };
 
 function writeScreen(val){
-    let newText = document.createElement("div");
-    newText.className = "numbers";
+    //let newText = document.createElement("div");
+    //newText.className = "numbers";
     if(numbersOnScreen === undefined){
         numbersOnScreen = val;
     } else if(mathDone){
@@ -71,9 +71,10 @@ function writeScreen(val){
     } else {
         numbersOnScreen = numbersOnScreen+val;
     };
-    newText.innerText = numbersOnScreen;
-    newText.style.fontSize = "50px";
-    lcd.appendChild(newText);
+    /**/writeNumbers();/**/
+    //newText.innerText = numbersOnScreen;
+    //newText.style.fontSize = "50px";
+    //lcd.appendChild(newText);
 };
 
 function calculate(){
@@ -184,8 +185,6 @@ function drawCommas(){
     lcd.appendChild(commas);
 }
 
-/* - - - TEST AREA - - - */
-
 function writeDigit(digit, value){
 	//pointing for every single stick
 	let target = document.querySelector(`.digit.n${digit}`);
@@ -291,7 +290,7 @@ function writeDigit(digit, value){
 	};
 };
 
-function test(){
+function writeNumbers(){
     clearScreen();
     drawDigits();
     drawCommas();
@@ -317,8 +316,6 @@ function numWithoutComma(){
     }
     return withoutComma;
 }
-
-/* - - - TEST AREA - - - */
 
 
 /*debugging*/
