@@ -118,3 +118,8 @@ btnOperators.forEach(op => {
 });
 ```
 I could combine those two in a single one if I also combine the `drawScreen()` and `ready()` functions, but won't save too much lines of code and would be harder to read.
+
+## update 6
+Now it's possible to write on the fancy numbers! Not from the page, anyways. With the new function `writeDigit(digit, value);` I can target one of the ten numbers and change it's sticks to an "active" state. I stored on a `switch-case` how to show all the numbers, telling whitch sticks have to be active. You can test it from the console using this function.
+
+The next step is to show the `numbersOnScreen` variable (which stores the number being written as an array) in fancy numbers. Then find a way to make the commas get active in the right position.
