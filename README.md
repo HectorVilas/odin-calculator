@@ -34,3 +34,67 @@ It was hard, but now the "calculator logic" is working! The equal button does no
 I also added an event listener to show on console the two operands and the operator on every single click, so it made debugging a lot easier. Something was off, but thanks to Firefox's debugging tools I managed to discover why "2 x 2 = 8" using breakpoints.
 
 The next step is to add function to the rest of the buttons, trying to no repeat myself. Also the actual code is a bit of a mess, needs some cleaning. The display is still a placeholder, the last step on this project will be making it functional.
+
+## update 4
+Wow! I just replaced a lot of repeated lines of code with some JS generation! Check it out!
+
+This is the HTML code, it was repeated 10 times:
+```html
+<div class="digit">
+    <div class="digit left">
+        <div class="stick horizontal"></div>
+        <div class="stick horizontal"></div>
+    </div>
+    <div class="digit center">
+        <div class="stick vertical"></div>
+        <div class="stick vertical"></div>
+        <div class="stick vertical"></div>
+    </div>
+    <div class="digit right">
+        <div class="stick horizontal active"></div>
+        <div class="stick horizontal active"></div>
+    </div>
+</div>
+```
+
+And I just replaced that disaster with this generator:
+
+```javascript
+let digits = document.createElement("div");
+digits.className = "digits";
+
+for(let i = 0; i < 10; i++){
+    let digit = document.createElement("div");
+    digit.className = "digit";
+    let digitLeft = document.createElement("div");
+    digitLeft.className = "digit left";
+    for (let i = 0; i < 2; i++) {
+        let stickHorizontal = document.createElement("div");
+        stickHorizontal.className = "stick horizontal";
+        digitLeft.appendChild(stickHorizontal);
+    }
+    let digitCenter = document.createElement("div");
+    digitCenter.className = "digit center";
+    for (let i = 0; i < 3; i++) {
+        let stickVertical = document.createElement("div");
+        stickVertical.className = "stick vertical";
+        digitCenter.appendChild(stickVertical);
+    }
+    let digitRight = document.createElement("div");
+    digitRight.className = "digit right";
+    for (let i = 0; i < 2; i++) {
+        let stickHorizontal = document.createElement("div");
+        stickHorizontal.className = "stick horizontal";
+        digitRight.appendChild(stickHorizontal);
+    }
+    digit.appendChild(digitLeft);
+    digit.appendChild(digitCenter);
+    digit.appendChild(digitRight);
+    digits.appendChild(digit);
+}
+
+lcd.appendChild(digits);
+```
+Maybe it's not big deal for real programmers, but I can't believe I managed to do it! Now the next step: do the same with the commas.
+
+You probably already noticed that this calculator have a max of 10 digits. It was never meant to be precise, it's just me flexing my new knowledge.
