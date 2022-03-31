@@ -32,29 +32,21 @@ btnN9.addEventListener("click", () => drawScreen("9"));
 /*-----operators-----*/
 const btnDelete = document.querySelector("#delete");
 btnDelete.addEventListener("click", () => {
-    drawScreen("");
     numbersOnScreen = undefined;
     operand = undefined;
     operator = undefined;
+    drawScreen(undefined);
 });
 const btnMultiply = document.querySelector("#multiply");
-btnMultiply.addEventListener("click", () => {
-    if(numbersOnScreen === undefined){
-        return;
-    } else if(operand === undefined){
-        operand = numbersOnScreen;
-        numbersOnScreen = undefined;
-        operator = "*";
-    } else {
-        calculate()
-        operand = numbersOnScreen;
-        numbersOnScreen = undefined;
-        operator = "*"; //check if needed
-    }
-});
+btnMultiply.addEventListener("click", () => ready("*"));
 const btnComma = document.querySelector("#comma");
+//
 const btnMinus = document.querySelector("#minus");
+btnMinus.addEventListener("click", () => ready("-"));
 const btnPlus = document.querySelector("#plus");
+btnPlus.addEventListener("click", () => ready("+"));
+const btnDivide = document.querySelector("#divide");
+btnDivide.addEventListener("click", () => ready("/"));
 const btnEqual = document.querySelector("#equal");
 btnEqual.addEventListener("click", () => {
     calculate()
@@ -102,7 +94,16 @@ function calculate(){
         let result;
         switch(operator){
             case "*":
-                result = parseInt(numbersOnScreen) * parseInt(operand);
+                result = parseFloat(operand) * parseFloat(numbersOnScreen);
+                break;
+            case "-":
+                result = parseFloat(operand) - parseFloat(numbersOnScreen);
+                break;
+            case "/":
+                result = parseFloat(operand) / parseFloat(numbersOnScreen);
+                break;
+            case "+":
+                result = parseFloat(operand) + parseFloat(numbersOnScreen);
                 break;
             default:
                 break;
@@ -114,6 +115,22 @@ function calculate(){
         if(mathDone){
             operand = result;
         }
+    }
+}
+
+//check for two operands and an operator
+function ready(operat){
+    if(numbersOnScreen === undefined){
+        return;
+    } else if(operand === undefined){
+        operand = numbersOnScreen;
+        numbersOnScreen = undefined;
+        operator = operat;
+    } else {
+        calculate()
+        operand = numbersOnScreen;
+        numbersOnScreen = undefined;
+        operator = operat; //check if needed
     }
 }
 
