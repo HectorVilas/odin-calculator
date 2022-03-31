@@ -131,28 +131,28 @@ function drawDigits(){
     let digits = document.createElement("div");
     digits.className = "digits";
 
-    for(let i = 0; i < 10; i++){
+    for(let i = 10; i > 0; i--){
         let digit = document.createElement("div");
-        digit.className = "digit";
+        digit.className = `digit n${i}`;
         let digitLeft = document.createElement("div");
-        digitLeft.className = "digit left";
+        digitLeft.className = `digit left`;
         for (let i = 0; i < 2; i++) {
             let stickHorizontal = document.createElement("div");
-            stickHorizontal.className = "stick horizontal";
+            stickHorizontal.className = `stick horizontal`;
             digitLeft.appendChild(stickHorizontal);
         }
         let digitCenter = document.createElement("div");
-        digitCenter.className = "digit center";
+        digitCenter.className = `digit center`;
         for (let i = 0; i < 3; i++) {
             let stickVertical = document.createElement("div");
-            stickVertical.className = "stick vertical";
+            stickVertical.className = `stick vertical`;
             digitCenter.appendChild(stickVertical);
         }
         let digitRight = document.createElement("div");
-        digitRight.className = "digit right";
+        digitRight.className = `digit right`;
         for (let i = 0; i < 2; i++) {
             let stickHorizontal = document.createElement("div");
-            stickHorizontal.className = "stick horizontal";
+            stickHorizontal.className = `stick horizontal`;
             digitRight.appendChild(stickHorizontal);
         }
         digit.appendChild(digitLeft);
@@ -164,9 +164,6 @@ function drawDigits(){
     lcd.appendChild(digits);
 }
 
-//function drawDigit(){
-//
-//};
 
 //commas generator
 function drawCommas(){
@@ -185,6 +182,101 @@ function drawCommas(){
     }
     lcd.appendChild(commas);
 }
+
+/* - - - TEST AREA - - - */
+
+//writeDigit(1, 9);
+
+function writeDigit(digit, value){
+	//pointing for every single stick
+	let target = document.querySelector(`.digit.n${digit}`);
+	let s1 = target.children[0].children[0];
+	let s2 = target.children[0].children[1];
+	let s3 = target.children[1].children[0];
+	let s4 = target.children[1].children[1];
+	let s5 = target.children[1].children[2];
+	let s6 = target.children[2].children[0];
+	let s7 = target.children[2].children[1];
+
+	//activating the sticks depending on the number
+	switch(value){
+		case 0:
+			s1.classList.add("active");
+			s2.classList.add("active");
+			s3.classList.add("active");
+			s5.classList.add("active");
+			s6.classList.add("active");
+			s7.classList.add("active");
+			break;
+		case 1:
+			s6.classList.add("active");
+			s7.classList.add("active");
+			break;
+		case 2:
+			s2.classList.add("active");
+			s3.classList.add("active");
+			s4.classList.add("active");
+			s5.classList.add("active");
+			s6.classList.add("active");
+			break;
+		case 3:
+			s3.classList.add("active");
+			s4.classList.add("active");
+			s5.classList.add("active");
+			s6.classList.add("active");
+			s7.classList.add("active");
+			break;
+		case 4:
+			s1.classList.add("active");
+			s4.classList.add("active");
+			s6.classList.add("active");
+			s7.classList.add("active");
+			break;
+		case 5:
+			s1.classList.add("active");
+			s3.classList.add("active");
+			s4.classList.add("active");
+			s5.classList.add("active");
+			s7.classList.add("active");
+			break;
+		case 6:
+			s1.classList.add("active");
+			s2.classList.add("active");
+			s3.classList.add("active");
+			s4.classList.add("active");
+			s5.classList.add("active");
+			s7.classList.add("active");
+			break;
+		case 7:
+			s3.classList.add("active");
+			s6.classList.add("active");
+			s7.classList.add("active");
+			break;
+		case 8:
+			s1.classList.add("active");
+			s2.classList.add("active");
+			s3.classList.add("active");
+			s4.classList.add("active");
+			s5.classList.add("active");
+			s6.classList.add("active");
+			s7.classList.add("active");
+			break;
+		case 9:
+			s1.classList.add("active");
+			s3.classList.add("active");
+			s4.classList.add("active");
+			s5.classList.add("active");
+			s6.classList.add("active");
+			s7.classList.add("active");
+			s8.classList.add("active");
+			break;
+		default:
+			console.log("something went horribly wrong");		
+	}
+};
+
+/* - - - TEST AREA - - - */
+
 
 /*debugging*/
 window.addEventListener("click", () => {
