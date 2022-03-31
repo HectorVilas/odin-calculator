@@ -13,7 +13,7 @@ drawCommas()
 
 
 
-/*-----numbers-----*/
+/*-----numbers and comma-----*/
 const btnNumbers = document.querySelectorAll(".number");
 btnNumbers.forEach(btn => {
 	btn.addEventListener("click", () => drawScreen(`${btn.id[1]}`));
@@ -27,16 +27,13 @@ btnDelete.addEventListener("click", () => {
     operator = undefined;
     drawScreen(undefined);
 });
-const btnMultiply = document.querySelector("#multiply");
-btnMultiply.addEventListener("click", () => ready("*"));
-const btnComma = document.querySelector("#comma");
-btnComma.addEventListener("click", () => drawScreen("."));
-const btnMinus = document.querySelector("#minus");
-btnMinus.addEventListener("click", () => ready("-"));
-const btnPlus = document.querySelector("#plus");
-btnPlus.addEventListener("click", () => ready("+"));
-const btnDivide = document.querySelector("#divide");
-btnDivide.addEventListener("click", () => ready("/"));
+
+//[+][-][*][/]
+const btnOperators = document.querySelectorAll(".operator");
+btnOperators.forEach(op => {
+	op.addEventListener("click", () => ready(op.getAttribute("data-operator")));
+});
+
 const btnEqual = document.querySelector("#equal");
 btnEqual.addEventListener("click", () => {
     calculate()

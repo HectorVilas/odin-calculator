@@ -32,8 +32,8 @@
                     <div class="group left">
                         <div class="group top left">
                             <button id="delete">Delete</button>
-                            <button id="multiply">*</button>
-                            <button id="divide">/</button>
+                            <button data-operator="*" class="operator" id="multiply">*</button>
+                            <button data-operator="/" class="operator" id="divide">/</button>
                         </div>
                         <div class="group center left">
                             <div class="numbers top">
@@ -54,13 +54,13 @@
                         </div>
                         <div class="group bottom left">
                             <button class="button number" id="n0">0</button>
-                            <button id="comma">,</button>
+                            <button class="number" id="n.">,</button>
                         </div>
                     </div>
                     <div class="group right">
                         <div class="group top right">
-                            <button id="minus">-</button>
-                            <button id="plus">+</button>
+                            <button data-operator="-" class="operator" id="minus">-</button>
+                            <button data-operator="+" class="operator" id="plus">+</button>
                         </div>
                         <div class="group bottom right">
                             <button id="equal">=</button>
