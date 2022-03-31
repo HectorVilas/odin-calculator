@@ -4,7 +4,48 @@ let operator = undefined;
 let mathDone = false;
 const lcd = document.querySelector(".lcd");
 
+
+
+/*----- TEST -----*/
 //drawScreen(""); //cleaning screen before starting
+clearScreen();
+let digits = document.createElement("div");
+digits.className = "digits";
+
+for(let i = 0; i < 10; i++){
+    let digit = document.createElement("div");
+    digit.className = "digit";
+    let digitLeft = document.createElement("div");
+    digitLeft.className = "digit left";
+    for (let i = 0; i < 2; i++) {
+        let stickHorizontal = document.createElement("div");
+        stickHorizontal.className = "stick horizontal";
+        digitLeft.appendChild(stickHorizontal);
+    }
+    let digitCenter = document.createElement("div");
+    digitCenter.className = "digit center";
+    for (let i = 0; i < 3; i++) {
+        let stickVertical = document.createElement("div");
+        stickVertical.className = "stick vertical";
+        digitCenter.appendChild(stickVertical);
+    }
+    let digitRight = document.createElement("div");
+    digitRight.className = "digit right";
+    for (let i = 0; i < 2; i++) {
+        let stickHorizontal = document.createElement("div");
+        stickHorizontal.className = "stick horizontal";
+        digitRight.appendChild(stickHorizontal);
+    }
+    digit.appendChild(digitLeft);
+    digit.appendChild(digitCenter);
+    digit.appendChild(digitRight);
+    digits.appendChild(digit);
+}
+
+lcd.appendChild(digits);
+/*----- TEST -----*/
+
+
 
 /*-----numbers-----*/
 //so much repetition! must find a way to "D.R.Y."
@@ -94,7 +135,7 @@ function calculate(){
         let result;
         switch(operator){
             case "*":
-                result = parseFloat(operand) * parseFloat(numbersOnScreen);
+                result = (parseFloat(operand) * parseFloat(numbersOnScreen));
                 break;
             case "-":
                 result = parseFloat(operand) - parseFloat(numbersOnScreen);
@@ -108,7 +149,11 @@ function calculate(){
             default:
                 break;
         }
-        numbersOnScreen = result;
+        if(result == Infinity){
+            numbersOnScreen = "ERROR!!!!!"
+        } else {
+            numbersOnScreen = result;
+        }
         mathDone = true;
         drawScreen(numbersOnScreen);
         operator = undefined;
