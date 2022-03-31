@@ -81,16 +81,16 @@ function calculate(){
         let result;
         switch(operator){
             case "*":
-                result = (parseFloat(operand) * parseFloat(numbersOnScreen));
+                result = (parseFloat(operand) * parseFloat(numbersOnScreen)).toString();
                 break;
             case "-":
-                result = parseFloat(operand) - parseFloat(numbersOnScreen);
+                result = (parseFloat(operand) - parseFloat(numbersOnScreen)).toString();
                 break;
             case "/":
-                result = parseFloat(operand) / parseFloat(numbersOnScreen);
+                result = (parseFloat(operand) / parseFloat(numbersOnScreen)).toString();
                 break;
             case "+":
-                result = parseFloat(operand) + parseFloat(numbersOnScreen);
+                result = (parseFloat(operand) + parseFloat(numbersOnScreen)).toString();
                 break;
             default:
                 break;
@@ -131,7 +131,8 @@ function drawDigits(){
     let digits = document.createElement("div");
     digits.className = "digits";
 
-    for(let i = 10; i > 0; i--){
+    //for(let i = 10; i > 0; i--){
+    for(let i = 0; i < 10; i++){
         let digit = document.createElement("div");
         digit.className = `digit n${i}`;
         let digitLeft = document.createElement("div");
@@ -185,8 +186,6 @@ function drawCommas(){
 
 /* - - - TEST AREA - - - */
 
-//writeDigit(1, 9);
-
 function writeDigit(digit, value){
 	//pointing for every single stick
 	let target = document.querySelector(`.digit.n${digit}`);
@@ -197,10 +196,12 @@ function writeDigit(digit, value){
 	let s5 = target.children[1].children[2];
 	let s6 = target.children[2].children[0];
 	let s7 = target.children[2].children[1];
-
+    
 	//activating the sticks depending on the number
-	switch(value){
+	switch(value.toString()){
+        //may not need the int
 		case 0:
+        case "0":
 			s1.classList.add("active");
 			s2.classList.add("active");
 			s3.classList.add("active");
@@ -209,10 +210,12 @@ function writeDigit(digit, value){
 			s7.classList.add("active");
 			break;
 		case 1:
+        case "1":
 			s6.classList.add("active");
 			s7.classList.add("active");
 			break;
 		case 2:
+        case "2":
 			s2.classList.add("active");
 			s3.classList.add("active");
 			s4.classList.add("active");
@@ -220,6 +223,7 @@ function writeDigit(digit, value){
 			s6.classList.add("active");
 			break;
 		case 3:
+        case "3":
 			s3.classList.add("active");
 			s4.classList.add("active");
 			s5.classList.add("active");
@@ -227,12 +231,14 @@ function writeDigit(digit, value){
 			s7.classList.add("active");
 			break;
 		case 4:
+        case "4":
 			s1.classList.add("active");
 			s4.classList.add("active");
 			s6.classList.add("active");
 			s7.classList.add("active");
 			break;
 		case 5:
+        case "5":
 			s1.classList.add("active");
 			s3.classList.add("active");
 			s4.classList.add("active");
@@ -240,6 +246,7 @@ function writeDigit(digit, value){
 			s7.classList.add("active");
 			break;
 		case 6:
+        case "6":
 			s1.classList.add("active");
 			s2.classList.add("active");
 			s3.classList.add("active");
@@ -248,11 +255,13 @@ function writeDigit(digit, value){
 			s7.classList.add("active");
 			break;
 		case 7:
+        case "7":
 			s3.classList.add("active");
 			s6.classList.add("active");
 			s7.classList.add("active");
 			break;
 		case 8:
+        case "8":
 			s1.classList.add("active");
 			s2.classList.add("active");
 			s3.classList.add("active");
@@ -262,18 +271,52 @@ function writeDigit(digit, value){
 			s7.classList.add("active");
 			break;
 		case 9:
+        case "9":
 			s1.classList.add("active");
 			s3.classList.add("active");
 			s4.classList.add("active");
 			s5.classList.add("active");
 			s6.classList.add("active");
 			s7.classList.add("active");
-			s8.classList.add("active");
 			break;
-		default:
-			console.log("something went horribly wrong");		
-	}
+        case "-":
+            s4.classList.add("active");
+            break;
+        default:
+            s1.classList.add("active");
+			s2.classList.add("active");
+            s3.classList.add("active");
+			s4.classList.add("active");
+            s5.classList.add("active");
+	};
 };
+
+function test(){
+    clearScreen();
+    drawDigits();
+    drawCommas();
+
+
+    if(numbersOnScreen !== undefined){
+        if(numWithoutComma().length <= 10){
+            for(let i = 0; i < numWithoutComma().length; i++){
+                writeDigit(i, numWithoutComma()[i]);
+            };
+        } else {
+            writeDigit(0, 0);
+        };
+    };
+};
+
+function numWithoutComma(){
+    let withoutComma = "";
+    for(let i = 0; i < numbersOnScreen.length; i++){
+        if(!numbersOnScreen[i].includes(".")){
+            withoutComma += numbersOnScreen[i];
+        }
+    }
+    return withoutComma;
+}
 
 /* - - - TEST AREA - - - */
 
