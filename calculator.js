@@ -14,27 +14,10 @@ drawCommas()
 
 
 /*-----numbers-----*/
-//so much repetition! must find a way to "D.R.Y."
-const btnN0 = document.querySelector("#n0");
-btnN0.addEventListener("click", () => drawScreen("0"));
-const btnN1 = document.querySelector("#n1");
-btnN1.addEventListener("click", () => drawScreen("1"));
-const btnN2 = document.querySelector("#n2");
-btnN2.addEventListener("click", () => drawScreen("2"));
-const btnN3 = document.querySelector("#n3");
-btnN3.addEventListener("click", () => drawScreen("3"));
-const btnN4 = document.querySelector("#n4");
-btnN4.addEventListener("click", () => drawScreen("4"));
-const btnN5 = document.querySelector("#n5");
-btnN5.addEventListener("click", () => drawScreen("5"));
-const btnN6 = document.querySelector("#n6");
-btnN6.addEventListener("click", () => drawScreen("6"));
-const btnN7 = document.querySelector("#n7");
-btnN7.addEventListener("click", () => drawScreen("7"));
-const btnN8 = document.querySelector("#n8");
-btnN8.addEventListener("click", () => drawScreen("8"));
-const btnN9 = document.querySelector("#n9");
-btnN9.addEventListener("click", () => drawScreen("9"));
+const btnNumbers = document.querySelectorAll(".number");
+btnNumbers.forEach(btn => {
+	btn.addEventListener("click", () => drawScreen(`${btn.id[1]}`));
+});
 
 /*-----operators-----*/
 const btnDelete = document.querySelector("#delete");
@@ -146,6 +129,7 @@ function ready(operat){
 }
 
 
+//digit generator
 function drawDigits(){
     let digits = document.createElement("div");
     digits.className = "digits";
@@ -183,16 +167,23 @@ function drawDigits(){
     lcd.appendChild(digits);
 }
 
+//function drawDigit(){
+//
+//};
+
+//commas generator
 function drawCommas(){
     let commas = document.createElement("div");
     commas.className = "commas";
-    
+
     for(let i = 0; i < 10; i++){
         let commaSeparator = document.createElement("div");
         commaSeparator.className = "comma-separator";
         let comma = document.createElement("div");
         comma.className = "comma";
-        commaSeparator.appendChild(comma);
+        if(i != 9){//removes an unnecesary comma
+            commaSeparator.appendChild(comma);
+        }
         commas.appendChild(commaSeparator);
     }
     lcd.appendChild(commas);
