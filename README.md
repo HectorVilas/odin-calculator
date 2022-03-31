@@ -2,9 +2,9 @@
 
 ## description
 
-Another project: a calculator. _May get abandoned a little, I want to start a project with somebody_. This time i'm making a simple calculator. Nothing fancy, nothing special, just another practice.
+Another project: a calculator. This time i'm making a simple calculator. Nothing fancy, nothing special, just another practice.
 
-Maybe you noticed how the buttons aren't properly aligned. That's because I'm still using `flexbox` for everything. I know `grid` would be a better solution, but I don't want to use it until i learn about it in The Odin Project.
+Maybe you noticed how the buttons aren't properly aligned. That's because I'm still using `flexbox` for everything. I know `grid` would be a better solution, but I don't want to use it until I learn about it in The Odin Project.
 
 # Live:
 ## https://hectorvilas.github.io/odin-calculator/
@@ -25,12 +25,12 @@ This is how it looks for now:
 ![preview](./images/calc01.png)
 
 ## update 2
-Now you can use the numbers on the page or in your keyboard to write on screen, but only text. The fancy lcd style will be disabled for now.
-The buttons have a `hover` property so you can see what are about to click.
+Now you can use the numbers on the page or in your keyboard to write on screen, but only text. The fancy LCD style will be disabled for now.
+The buttons have a `hover` property so you can see what you are about to click.
 
 ## update 3
 It was hard, but now the "calculator logic" is working! The equal button does nothing until it have two operands and an operator (just multiplication for now). You can also get a result pressing the operator again, get the result and store it as the first operator, so you can write the second one and keep calculating without the need of writing again everything.
 
 I also added an event listener to show on console the two operands and the operator on every single click, so it made debugging a lot easier. Something was off, but thanks to Firefox's debugging tools I managed to discover why "2 x 2 = 8" using breakpoints.
 
-The next step is to add function to the rest of the numbers, trying to no repeat myself. Also the actual code is a bit of a mess, needs some cleaning. The display is still a placeholder, the last step on this project will be making it functional.
+The next step is to add function to the rest of the buttons, trying to no repeat myself. Also the actual code is a bit of a mess, needs some cleaning. The display is still a placeholder, the last step on this project will be making it functional.
