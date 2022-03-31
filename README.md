@@ -95,6 +95,6 @@ for(let i = 0; i < 10; i++){
 
 lcd.appendChild(digits);
 ```
-Maybe it's not big deal for real programmers, but I can't believe I managed to do it! Now the next step: do the same with the commas.
+Maybe it's not big deal for real programmers, but I can't believe I managed to do it! Now the next step: do the same with the commas (update: done).
 
 You probably already noticed that this calculator have a max of 10 digits. It was never meant to be precise, it's just me flexing my new knowledge.
