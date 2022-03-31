@@ -40,7 +40,7 @@ btnDelete.addEventListener("click", () => {
 const btnMultiply = document.querySelector("#multiply");
 btnMultiply.addEventListener("click", () => ready("*"));
 const btnComma = document.querySelector("#comma");
-//
+btnComma.addEventListener("click", () => drawScreen("."));
 const btnMinus = document.querySelector("#minus");
 btnMinus.addEventListener("click", () => ready("-"));
 const btnPlus = document.querySelector("#plus");
