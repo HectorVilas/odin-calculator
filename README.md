@@ -123,3 +123,6 @@ I could combine those two in a single one if I also combine the `drawScreen()` a
 Now it's possible to write on the fancy numbers! Not from the page, anyways. With the new function `writeDigit(digit, value);` I can target one of the ten numbers and change it's sticks to an "active" state. I stored on a `switch-case` how to show all the numbers, telling whitch sticks have to be active. You can test it from the console using this function.
 
 The next step is to show the `numbersOnScreen` variable (which stores the number being written as an array) in fancy numbers. Then find a way to make the commas get active in the right position.
+
+## update 7
+Now the fancy numbers are working like normal, instead of showing plain text. The commas are not showing for now, I need another method for those, to activate the little squares at the bottom. I'm not sure how I'm going to find the exact position. Maybe multiplying the number and then comparing with the original as _int_. The display will stop working, showing an "E" on screen after 10 digits (9 for negative numbers), but you can still see the numbers on console.
