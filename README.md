@@ -98,3 +98,23 @@ lcd.appendChild(digits);
 Maybe it's not big deal for real programmers, but I can't believe I managed to do it! Now the next step: do the same with the commas (update: done).
 
 You probably already noticed that this calculator have a max of 10 digits. It was never meant to be precise, it's just me flexing my new knowledge.
+
+## update 5
+I just shrinked (optimized?) the code, replacing the repetition with a `querySelectorAll()`. All my number buttons had the class _number_ and the number itself in the ID (also used it for the comma), and took advantage of it. 20 lines of code got replaced with a single one:
+
+```javascript
+const btnNumbers = document.querySelectorAll(".number");
+btnNumbers.forEach(btn => {
+	btn.addEventListener("click", () => drawScreen(`${btn.id[1]}`));
+});
+```
+
+Then I noticed I can use custom data attributes and get it's value with `getAttribute()`, so I took advantage of it for the operators:
+
+```javascript
+const btnOperators = document.querySelectorAll(".operator");
+btnOperators.forEach(op => {
+	op.addEventListener("click", () => ready(op.getAttribute("data-operator")));
+});
+```
+I could combine those two in a single one if I also combine the `drawScreen()` and `ready()` functions, but won't save too much lines of code and would be harder to read.
