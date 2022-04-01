@@ -126,3 +126,12 @@ The next step is to show the `numbersOnScreen` variable (which stores the number
 
 ## update 7
 Now the fancy numbers are working like normal, instead of showing plain text. The commas are not showing for now, I need another method for those, to activate the little squares at the bottom. I'm not sure how I'm going to find the exact position. Maybe multiplying the number and then comparing with the original as _int_. The display will stop working, showing an "E" on screen after 10 digits (9 for negative numbers), but you can still see the numbers on console.
+
+## update 8
+I added more key functions. Now it's possible to add, substract, multiply or divide using the keyboard (numpad recommended).
+
+As a little extra, now it's possible to change the operator if there's no two operands present, like in a real calculator.
+
+Also a minimal technical change: the debug shows every time a button or key is pressed, there's no need to click somewhere to see those values anymore.
+
+This project is almost ready. The final steps are: adding commas on screen and limit the digits after it.
