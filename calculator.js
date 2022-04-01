@@ -112,7 +112,6 @@ function calculate(){
 
 //check for two operands and an operator
 function ready(operat){
-
     if(operand === undefined || numbersOnScreen === undefined){
         //changin operator if there's 1 or 0 operands
         operator = operat;
@@ -132,7 +131,6 @@ function ready(operat){
     }
     debug();
 }
-
 
 //digit generator
 function drawDigits(){
@@ -172,8 +170,6 @@ function drawDigits(){
 
     lcd.appendChild(digits);
 }
-
-
 //commas generator
 function drawCommas(){
     let commas = document.createElement("div");
@@ -192,6 +188,7 @@ function drawCommas(){
     lcd.appendChild(commas);
 }
 
+//changes digit's sticks depending on a number
 function writeDigit(digit, value){
 	//pointing for every single stick
 	let target = document.querySelector(`.digit.n${digit}`);
@@ -208,101 +205,57 @@ function writeDigit(digit, value){
         //may not need the int
 		case 0:
         case "0":
-			s1.classList.add("active");
-			s2.classList.add("active");
-			s3.classList.add("active");
-			s5.classList.add("active");
-			s6.classList.add("active");
-			s7.classList.add("active");
+            [s1,s2,s3,s5,s6,s7].forEach(s => s.classList.add("active"));
 			break;
 		case 1:
         case "1":
-			s6.classList.add("active");
-			s7.classList.add("active");
+            [s6,s7].forEach(s => s.classList.add("active"));
 			break;
 		case 2:
         case "2":
-			s2.classList.add("active");
-			s3.classList.add("active");
-			s4.classList.add("active");
-			s5.classList.add("active");
-			s6.classList.add("active");
+            [s2,s3,s4,s5,s6].forEach(s => s.classList.add("active"));
 			break;
 		case 3:
         case "3":
-			s3.classList.add("active");
-			s4.classList.add("active");
-			s5.classList.add("active");
-			s6.classList.add("active");
-			s7.classList.add("active");
+            [s3,s4,s5,s6,s7].forEach(s => s.classList.add("active"));
 			break;
 		case 4:
         case "4":
-			s1.classList.add("active");
-			s4.classList.add("active");
-			s6.classList.add("active");
-			s7.classList.add("active");
+            [s1,s4,s6,s7].forEach(s => s.classList.add("active"));
 			break;
 		case 5:
         case "5":
-			s1.classList.add("active");
-			s3.classList.add("active");
-			s4.classList.add("active");
-			s5.classList.add("active");
-			s7.classList.add("active");
+            [s1,s3,s4,s5,s7].forEach(s => s.classList.add("active"));
 			break;
 		case 6:
         case "6":
-			s1.classList.add("active");
-			s2.classList.add("active");
-			s3.classList.add("active");
-			s4.classList.add("active");
-			s5.classList.add("active");
-			s7.classList.add("active");
+            [s1,s2,s3,s4,s5,s7].forEach(s => s.classList.add("active"));
 			break;
 		case 7:
         case "7":
-			s3.classList.add("active");
-			s6.classList.add("active");
-			s7.classList.add("active");
+            [s3,s6,s7].forEach(s => s.classList.add("active"));
 			break;
 		case 8:
         case "8":
-			s1.classList.add("active");
-			s2.classList.add("active");
-			s3.classList.add("active");
-			s4.classList.add("active");
-			s5.classList.add("active");
-			s6.classList.add("active");
-			s7.classList.add("active");
+            [s1,s2,s3,s4,s5,s6,s7].forEach(s => s.classList.add("active"));
 			break;
 		case 9:
         case "9":
-			s1.classList.add("active");
-			s3.classList.add("active");
-			s4.classList.add("active");
-			s5.classList.add("active");
-			s6.classList.add("active");
-			s7.classList.add("active");
+            [s1,s3,s4,s5,s6,s7].forEach(s => s.classList.add("active"));
 			break;
         case "-":
             s4.classList.add("active");
             break;
         default:
-            s1.classList.add("active");
-			s2.classList.add("active");
-            s3.classList.add("active");
-			s4.classList.add("active");
-            s5.classList.add("active");
+            [s1,s2,s3,s4,s5].forEach(s => s.classList.add("active"));
 	};
 };
 
+//write all the 10 digits without comma
 function writeNumbers(){
     clearScreen();
     drawDigits();
     drawCommas();
-
-
     if(numbersOnScreen !== undefined){
         if(numWithoutComma().length <= 10){
             for(let i = 0; i < numWithoutComma().length; i++){
@@ -314,6 +267,7 @@ function writeNumbers(){
     };
 };
 
+//removes the comma from the numbers, visible in other div
 function numWithoutComma(){
     let withoutComma = "";
     for(let i = 0; i < numbersOnScreen.length; i++){
@@ -324,8 +278,7 @@ function numWithoutComma(){
     return withoutComma;
 }
 
-
-/*debugging*/
+//writes operands and operator on console
 function debug(){
     console.log(numbersOnScreen + "\n" + operator + "\n" + operand)
 };
