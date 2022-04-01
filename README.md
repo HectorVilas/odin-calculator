@@ -135,3 +135,23 @@ As a little extra, now it's possible to change the operator if there's no two op
 Also a minimal technical change: the debug shows every time a button or key is pressed, there's no need to click somewhere to see those values anymore.
 
 This project is almost ready. The final steps are: adding commas on screen and limit the digits after it.
+
+## update 9
+
+After going up and down in the code, I noticed how absurdly big a function was, something like 90-100 lines of code. For example, this is how I draw an "8" on screen:
+```javascript
+s1.classList.add("active");
+s2.classList.add("active");
+s3.classList.add("active");
+s4.classList.add("active");
+s5.classList.add("active");
+s6.classList.add("active");
+s7.classList.add("active");
+```
+
+Similar for the rest of the numbers. So I found a way to make it more simple, in a single line, saving like 50 lines of code in the function:
+
+```javascript
+[s1,s2,s3,s4,s5,s6,s7].forEach(s => s.classList.add("active"));
+```
+I just came with the idea, and it worked! I'm pretty sure any programmer know about it, but I think I never saw it done before in any tutorial I watched. Maybe the programming finally made a "click" in my head, again.
