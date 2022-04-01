@@ -4,11 +4,9 @@ let operator = undefined;
 let mathDone = false;
 const lcd = document.querySelector(".lcd");
 
-
-
-clearScreen();//temporal, remove commas until I make a generator
-
-drawDigits() //draw digital numbers, no active sticks yet
+//initializing screen
+clearScreen();
+drawDigits();
 drawCommas() 
 
 
@@ -41,17 +39,24 @@ btnEqual.addEventListener("click", () => {
 
 
 //using the keyboard
-window.addEventListener("keypress", (e) => {
+window.addEventListener("keydown", (e) => {
     let numbers = "0123456789";
     if(numbers.includes(e.key)){
         drawScreen(e.key);
     };
+    let operators = ["+","-","*","/"];
+    if(operators.includes(e.key)){
+        ready(e.key);
+    }
+    let otherKeys = ["Enter","Backspace","Delete",".",","];
+
 });
 
 /*-----main fuction to draw screen-----*/
 function drawScreen(val){
     clearScreen();
     writeScreen(val);
+    debug();
 };
 
 function clearScreen(){
@@ -61,8 +66,6 @@ function clearScreen(){
 };
 
 function writeScreen(val){
-    //let newText = document.createElement("div");
-    //newText.className = "numbers";
     if(numbersOnScreen === undefined){
         numbersOnScreen = val;
     } else if(mathDone){
@@ -71,10 +74,7 @@ function writeScreen(val){
     } else {
         numbersOnScreen = numbersOnScreen+val;
     };
-    /**/writeNumbers();/**/
-    //newText.innerText = numbersOnScreen;
-    //newText.style.fontSize = "50px";
-    //lcd.appendChild(newText);
+    writeNumbers();
 };
 
 function calculate(){
@@ -113,6 +113,7 @@ function calculate(){
 //check for two operands and an operator
 function ready(operat){
     if(numbersOnScreen === undefined){
+        console.log("needs operand first");
         return;
     } else if(operand === undefined){
         operand = numbersOnScreen;
@@ -124,6 +125,7 @@ function ready(operat){
         numbersOnScreen = undefined;
         operator = operat; //check if needed
     }
+    debug();
 }
 
 
@@ -319,7 +321,6 @@ function numWithoutComma(){
 
 
 /*debugging*/
-window.addEventListener("click", () => {
-    console.clear()
-    console.log(numbersOnScreen + "\n" + operator + "\n" + operand + "\n" + mathDone);
-});
+function debug(){
+    console.log(numbersOnScreen + "\n" + operator + "\n" + operand)
+};
