@@ -77,6 +77,7 @@ function writeScreen(val){
         numbersOnScreen = numbersOnScreen+val;
     };
     writeNumbers();
+    writeComma();
 };
 
 function calculate(){
@@ -101,9 +102,9 @@ function calculate(){
         if(result == Infinity){
             numbersOnScreen = "ERROR!!!!!"
         } else if(result == parseInt(result)){
-                numbersOnScreen = result;
+            numbersOnScreen = result;
         } else {
-            result = (parseFloat(result).toFixed(5)).toString();
+            result = (parseFloat(result).toFixed(4)).toString();
             while(result[result.length-1] == "0"){//remove unnecesary zeroes
                 result = result.split("");
                 result.pop();
@@ -187,9 +188,9 @@ function drawCommas(){
 
     for(let i = 0; i < 10; i++){
         let commaSeparator = document.createElement("div");
-        commaSeparator.className = "comma-separator";
+        commaSeparator.className = `comma-separator n${i}`;
         let comma = document.createElement("div");
-        comma.className = "comma";
+        comma.className = `comma n${i}`;
         if(i != 9){//removes an unnecesary comma
             commaSeparator.appendChild(comma);
         }
@@ -264,6 +265,29 @@ function writeNumbers(){
             writeDigit(0, 0);
         };
     };
+};
+
+//getting the comma position, limited to 4 decimals or JS freaks out
+function writeComma(){
+    let commaPosition = -1;
+    let found = false;
+
+    if(numbersOnScreen !== undefined){
+        let numToArr = numbersOnScreen.split("");
+            numToArr.forEach(char =>{
+            
+            if(char != "." && !found){
+                commaPosition++;
+            } else {
+                found = true;
+            };
+        });
+        
+        if(commaPosition >= 0 && commaPosition < 9 && found == true){
+            let commaOnScreen = document.querySelector(`.comma.n${commaPosition}`);
+            commaOnScreen.classList.add("active");
+        }
+    }
 };
 
 //removes the comma from the numbers, visible in other div
