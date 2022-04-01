@@ -1,8 +1,10 @@
 let numbersOnScreen = undefined;
 let operand = undefined;
 let operator = undefined;
-let mathDone = false;
 const lcd = document.querySelector(".lcd");
+
+//moves the number to the operand after getting the result without "="
+let mathDone = false;
 
 //initializing screen
 clearScreen();
@@ -98,7 +100,15 @@ function calculate(){
         }
         if(result == Infinity){
             numbersOnScreen = "ERROR!!!!!"
+        } else if(result == parseInt(result)){
+                numbersOnScreen = result;
         } else {
+            result = (parseFloat(result).toFixed(5)).toString();
+            while(result[result.length-1] == "0"){//remove unnecesary zeroes
+                result = result.split("");
+                result.pop();
+                result = result.join("");
+            }
             numbersOnScreen = result;
         }
         mathDone = true;
@@ -202,44 +212,33 @@ function writeDigit(digit, value){
     
 	//activating the sticks depending on the number
 	switch(value.toString()){
-        //may not need the int
-		case 0:
         case "0":
             [s1,s2,s3,s5,s6,s7].forEach(s => s.classList.add("active"));
 			break;
-		case 1:
         case "1":
             [s6,s7].forEach(s => s.classList.add("active"));
 			break;
-		case 2:
         case "2":
             [s2,s3,s4,s5,s6].forEach(s => s.classList.add("active"));
 			break;
-		case 3:
         case "3":
             [s3,s4,s5,s6,s7].forEach(s => s.classList.add("active"));
 			break;
-		case 4:
         case "4":
             [s1,s4,s6,s7].forEach(s => s.classList.add("active"));
 			break;
-		case 5:
         case "5":
             [s1,s3,s4,s5,s7].forEach(s => s.classList.add("active"));
 			break;
-		case 6:
         case "6":
             [s1,s2,s3,s4,s5,s7].forEach(s => s.classList.add("active"));
 			break;
-		case 7:
         case "7":
             [s3,s6,s7].forEach(s => s.classList.add("active"));
 			break;
-		case 8:
         case "8":
             [s1,s2,s3,s4,s5,s6,s7].forEach(s => s.classList.add("active"));
 			break;
-		case 9:
         case "9":
             [s1,s3,s4,s5,s6,s7].forEach(s => s.classList.add("active"));
 			break;
