@@ -2,14 +2,15 @@
 
 ## description
 
-Another project: a calculator. This time i'm making a simple calculator. Nothing fancy, nothing special, just another practice.
-
+Another project: a calculator. This time i'm making a ~~simple~~ calculator. ~~Nothing fancy, nothing special, just another practice.~~
+***
+Update: this calc got fancy! A display made of `divs` that turn on the little sticks to draw the digits, some calculator logic (you don't need to press "=" every single time, just click on another operator!), partial keyboard support... The crazy part is how I managed to draw everything with `divs`+`flexbox`, there's no images on this calculator, except for the Github logo.
+***
 Maybe you noticed how the buttons aren't properly aligned. That's because I'm still using `flexbox` for everything. I know `grid` would be a better solution, but I don't want to use it until I learn about it in The Odin Project.
 
 # Live:
-## https://hectorvilas.github.io/odin-calculator/
+# https://hectorvilas.github.io/odin-calculator/
 
-***
 
 ## update 1
 Added the LCD display thingy using `<div>`s for a classic calculator look. 10 vectorial images would be a lot less work and faster to manipulate, but where is the challenge on it?
@@ -155,3 +156,19 @@ Similar for the rest of the numbers. So I found a way to make it more simple, in
 [s1,s2,s3,s4,s5,s6,s7].forEach(s => s.classList.add("active"));
 ```
 I just came with the idea, and it worked! I'm pretty sure any programmer know about it, but I think I never saw it done before in any tutorial I watched. Maybe the programming finally made a "click" in my head, again.
+
+## update 10
+Now the comma will be drawn on the fancy screen depending on it's position! Same limitation with the numbers: only have 10 possible positions.
+
+![Final design](./images/calc02.png)
+
+***
+
+# final toughts
+So this is it! I finally finished the calculator. Nobody asked for a fancy screen, but I want to challenge myself! After all, this is suposed to be an exercise. I learned a lot more and I'm happy I can keep going like this without feeling blocked or lost in the course.
+
+I want to clarify again that _this calculator is not precise with big numbers_. It only have a maximum of 10 digits on screen, and it's made like this by design. If you really needed those numbers, check the navigator's console (F12 on Firefox and Chrome, then look for the "console" tab).
+
+I could consider the project finished, but there's still some things I could do with it. Maybe more fancy digits, or add some `.preventDefault()` in some places, or more functional keys... but I want to move on, keep learning, I want to be a real programmer someday!
+
+See you in the next project!
