@@ -112,8 +112,13 @@ function calculate(){
 
 //check for two operands and an operator
 function ready(operat){
+
+    if(operand === undefined || numbersOnScreen === undefined){
+        //changin operator if there's 1 or 0 operands
+        operator = operat;
+    };
     if(numbersOnScreen === undefined){
-        console.log("needs operand first");
+        debug();
         return;
     } else if(operand === undefined){
         operand = numbersOnScreen;
@@ -123,7 +128,7 @@ function ready(operat){
         calculate()
         operand = numbersOnScreen;
         numbersOnScreen = undefined;
-        operator = operat; //check if needed
+        operator = operat;
     }
     debug();
 }
