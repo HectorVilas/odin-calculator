@@ -9,7 +9,7 @@ let mathDone = false;
 //initializing screen
 clearScreen();
 drawDigits();
-drawCommas() 
+drawCommas();
 
 
 
@@ -22,7 +22,7 @@ btnNumbers.forEach(btn => {
 //comma
 const btnComma = document.querySelector("#comma");
     btnComma.addEventListener("click", () => {
-        addSingleComma()
+        addSingleComma();
     });
 //operators
 const btnDelete = document.querySelector("#delete");
@@ -39,7 +39,7 @@ btnOperators.forEach(op => {
 //[=]
 const btnEqual = document.querySelector("#equal");
 btnEqual.addEventListener("click", () => {
-    calculate()
+    calculate();
 });
 
 
@@ -54,15 +54,15 @@ window.addEventListener("keydown", (e) => {
         ready(e.key);
         e.preventDefault();
     } else if(e.key == "." || e.key == ","){
-        addSingleComma()
+        addSingleComma();
         e.preventDefault();
     } else if (e.key == "Enter"){
-        calculate()
+        calculate();
         e.preventDefault();
     } else if (e.key == "Backspace" || e.key == "Delete"){
-        deleteNums()
+        deleteNums();
         e.preventDefault();
-    }
+    };
 });
 
 /*-----main fuction to draw screen-----*/
@@ -123,15 +123,15 @@ function calculate(){
                 result = result.join("");
             }
             numbersOnScreen = result;
-        }
+        };
         mathDone = true;
         drawScreen(numbersOnScreen);
         operator = undefined;
         if(mathDone){
             operand = result;
-        }
-    }
-}
+        };
+    };
+};
 
 //check for two operands and an operator
 function ready(operat){
@@ -147,7 +147,7 @@ function ready(operat){
         numbersOnScreen = undefined;
         operator = operat;
     } else {
-        calculate()
+        calculate();
         operand = numbersOnScreen;
         numbersOnScreen = undefined;
         operator = operat;
@@ -169,21 +169,21 @@ function drawDigits(){
             let stickHorizontal = document.createElement("div");
             stickHorizontal.className = `stick horizontal`;
             digitLeft.appendChild(stickHorizontal);
-        }
+        };
         let digitCenter = document.createElement("div");
         digitCenter.className = `digit center`;
         for (let i = 0; i < 3; i++) {
             let stickVertical = document.createElement("div");
             stickVertical.className = `stick vertical`;
             digitCenter.appendChild(stickVertical);
-        }
+        };
         let digitRight = document.createElement("div");
         digitRight.className = `digit right`;
         for (let i = 0; i < 2; i++) {
             let stickHorizontal = document.createElement("div");
             stickHorizontal.className = `stick horizontal`;
             digitRight.appendChild(stickHorizontal);
-        }
+        };
         digit.appendChild(digitLeft);
         digit.appendChild(digitCenter);
         digit.appendChild(digitRight);
@@ -205,11 +205,11 @@ function drawCommas(){
         //removes an unnecesary comma
         if(i != 9){
             commaSeparator.appendChild(comma);
-        }
+        };
         commas.appendChild(commaSeparator);
-    }
+    };
     lcd.appendChild(commas);
-}
+};
 
 //changes digit's sticks depending on a number
 function writeDigit(digit, value){
@@ -298,8 +298,8 @@ function writeComma(){
         if(commaPosition >= 0 && commaPosition < 9 && found == true){
             let commaOnScreen = document.querySelector(`.comma.n${commaPosition}`);
             commaOnScreen.classList.add("active");
-        }
-    }
+        };
+    };
 };
 
 //removes the comma from the numbers, visible in other div
@@ -308,23 +308,23 @@ function numWithoutComma(){
     for(let i = 0; i < numbersOnScreen.length; i++){
         if(!numbersOnScreen[i].includes(".")){
             withoutComma += numbersOnScreen[i];
-        }
-    }
+        };
+    };
     return withoutComma;
-}
+};
 
 function addSingleComma(){
     if(numbersOnScreen !== undefined && !numbersOnScreen.includes(`.`)){
         drawScreen(`.`);
-    }
-}
+    };
+};
 
 function deleteNums(){
     numbersOnScreen = undefined;
     operand = undefined;
     operator = undefined;
     drawScreen(undefined);
-}
+};
 
 //writes operands and operator on console
 function debug(){
