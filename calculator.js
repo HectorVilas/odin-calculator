@@ -13,12 +13,19 @@ drawCommas()
 
 
 
-/*-----numbers and comma-----*/
+/*-----numbers-----*/
 const btnNumbers = document.querySelectorAll(".number");
 btnNumbers.forEach(btn => {
 	btn.addEventListener("click", () => drawScreen(`${btn.id[1]}`));
 });
 
+/*-----comma-----*/
+const btnComma = document.querySelector("#comma");
+    btnComma.addEventListener("click", () => {
+        if(numbersOnScreen !== undefined && !numbersOnScreen.includes(`.`)){
+            drawScreen(`.`);
+        }
+    });
 /*-----operators-----*/
 const btnDelete = document.querySelector("#delete");
 btnDelete.addEventListener("click", () => {
