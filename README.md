@@ -172,3 +172,16 @@ I want to clarify again that _this calculator is not precise with big numbers_. 
 I could consider the project finished, but there's still some things I could do with it. Maybe more fancy digits, or add some `.preventDefault()` in some places, or more functional keys... but I want to move on, keep learning, I want to be a real programmer someday!
 
 See you in the next project!
+
+***
+
+# post-v1.0 updates
+
+## update 1:
+I can't leave the project unfinished, so I went back to it to make some necessary updates.
+
+The number of commas has been limited to just one.
+
+All the necessary keys now work on the calculator, with `.preventDefault()` to disable the default actions on the navigator, like the "/" key on the numpad that opens the "quick find" on Firefox, or the "Enter" key that would press again the last clicked button.
+
+And finally, I modified the comments' format for consistency.
