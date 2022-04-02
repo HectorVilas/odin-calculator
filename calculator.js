@@ -22,17 +22,12 @@ btnNumbers.forEach(btn => {
 //comma
 const btnComma = document.querySelector("#comma");
     btnComma.addEventListener("click", () => {
-        if(numbersOnScreen !== undefined && !numbersOnScreen.includes(`.`)){
-            drawScreen(`.`);
-        }
+        addSingleComma()
     });
 //operators
 const btnDelete = document.querySelector("#delete");
 btnDelete.addEventListener("click", () => {
-    numbersOnScreen = undefined;
-    operand = undefined;
-    operator = undefined;
-    drawScreen(undefined);
+    deleteNums();
 });
 
 //[+][-][*][/]
@@ -41,7 +36,7 @@ btnOperators.forEach(op => {
 	op.addEventListener("click", () => ready(op.getAttribute("data-operator")));
 });
 
-//[.]
+//[=]
 const btnEqual = document.querySelector("#equal");
 btnEqual.addEventListener("click", () => {
     calculate()
@@ -51,17 +46,23 @@ btnEqual.addEventListener("click", () => {
 //using the keyboard
 window.addEventListener("keydown", (e) => {
     let numbers = "0123456789";
+    let operators = ["+","-","*","/"];
     if(numbers.includes(e.key)){
         drawScreen(e.key);
         e.preventDefault();
-    };
-    let operators = ["+","-","*","/"];
-    if(operators.includes(e.key)){
+    }else if(operators.includes(e.key)){
         ready(e.key);
         e.preventDefault();
+    } else if(e.key == "." || e.key == ","){
+        addSingleComma()
+        e.preventDefault();
+    } else if (e.key == "Enter"){
+        calculate()
+        e.preventDefault();
+    } else if (e.key == "Backspace" || e.key == "Delete"){
+        deleteNums()
+        e.preventDefault();
     }
-    let otherKeys = ["Enter","Backspace","Delete",".",","];
-
 });
 
 /*-----main fuction to draw screen-----*/
@@ -310,6 +311,19 @@ function numWithoutComma(){
         }
     }
     return withoutComma;
+}
+
+function addSingleComma(){
+    if(numbersOnScreen !== undefined && !numbersOnScreen.includes(`.`)){
+        drawScreen(`.`);
+    }
+}
+
+function deleteNums(){
+    numbersOnScreen = undefined;
+    operand = undefined;
+    operator = undefined;
+    drawScreen(undefined);
 }
 
 //writes operands and operator on console
