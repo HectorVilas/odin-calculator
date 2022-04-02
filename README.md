@@ -185,3 +185,6 @@ The number of commas has been limited to just one.
 All the necessary keys now work on the calculator, with `.preventDefault()` to disable the default actions on the navigator, like the "/" key on the numpad that opens the "quick find" on Firefox, or the "Enter" key that would press again the last clicked button.
 
 And finally, I modified the comments' format for consistency.
+
+## update 2:
+Now a pressed button have visual feedback. It will change color and change scale to 95% in 50ms.
