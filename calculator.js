@@ -13,20 +13,20 @@ drawCommas()
 
 
 
-/*-----numbers-----*/
+//numbers
 const btnNumbers = document.querySelectorAll(".number");
 btnNumbers.forEach(btn => {
 	btn.addEventListener("click", () => drawScreen(`${btn.id[1]}`));
 });
 
-/*-----comma-----*/
+//comma
 const btnComma = document.querySelector("#comma");
     btnComma.addEventListener("click", () => {
         if(numbersOnScreen !== undefined && !numbersOnScreen.includes(`.`)){
             drawScreen(`.`);
         }
     });
-/*-----operators-----*/
+//operators
 const btnDelete = document.querySelector("#delete");
 btnDelete.addEventListener("click", () => {
     numbersOnScreen = undefined;
@@ -41,6 +41,7 @@ btnOperators.forEach(op => {
 	op.addEventListener("click", () => ready(op.getAttribute("data-operator")));
 });
 
+//[.]
 const btnEqual = document.querySelector("#equal");
 btnEqual.addEventListener("click", () => {
     calculate()
@@ -114,7 +115,8 @@ function calculate(){
             numbersOnScreen = result;
         } else {
             result = (parseFloat(result).toFixed(4)).toString();
-            while(result[result.length-1] == "0"){//remove unnecesary zeroes
+            //remove unnecesary zeroes
+            while(result[result.length-1] == "0"){
                 result = result.split("");
                 result.pop();
                 result = result.join("");
@@ -157,7 +159,6 @@ function drawDigits(){
     let digits = document.createElement("div");
     digits.className = "digits";
 
-    //for(let i = 10; i > 0; i--){
     for(let i = 0; i < 10; i++){
         let digit = document.createElement("div");
         digit.className = `digit n${i}`;
@@ -200,7 +201,8 @@ function drawCommas(){
         commaSeparator.className = `comma-separator n${i}`;
         let comma = document.createElement("div");
         comma.className = `comma n${i}`;
-        if(i != 9){//removes an unnecesary comma
+        //removes an unnecesary comma
+        if(i != 9){
             commaSeparator.appendChild(comma);
         }
         commas.appendChild(commaSeparator);
@@ -276,7 +278,7 @@ function writeNumbers(){
     };
 };
 
-//getting the comma position, limited to 4 decimals or JS freaks out
+//getting the comma position
 function writeComma(){
     let commaPosition = -1;
     let found = false;
