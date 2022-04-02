@@ -220,6 +220,15 @@ button:hover,
     transition-duration: 100ms;
     z-index: 0;
 }
+.button:active,
+button:active,
+#equal:active {
+    background-color: gray;
+    border-style: outset;
+    box-shadow: 0 0 10px black;
+    transition-duration: 50ms;
+    scale: 95%;
+}
 
 /*----- just for testing -----*/
 ** {
