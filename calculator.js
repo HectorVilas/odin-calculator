@@ -52,10 +52,12 @@ window.addEventListener("keydown", (e) => {
     let numbers = "0123456789";
     if(numbers.includes(e.key)){
         drawScreen(e.key);
+        e.preventDefault();
     };
     let operators = ["+","-","*","/"];
     if(operators.includes(e.key)){
         ready(e.key);
+        e.preventDefault();
     }
     let otherKeys = ["Enter","Backspace","Delete",".",","];
 
