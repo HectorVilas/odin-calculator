@@ -188,3 +188,6 @@ And finally, I modified the comments' format for consistency.
 
 ## update 2:
 Now a pressed button have visual feedback. It will change color and change scale to 95% in 50ms.
+
+## update 3:
+Now you can see the math in the page title.

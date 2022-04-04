@@ -326,7 +326,21 @@ function deleteNums(){
     drawScreen(undefined);
 };
 
-//writes operands and operator on console
+//writes operands and operator on console and title
 function debug(){
-    console.log(numbersOnScreen + "\n" + operator + "\n" + operand)
+    console.log(numbersOnScreen + "\n" + operator + "\n" + operand);
+    
+    let title = document.querySelector(".title");
+    let actualOperand1 = "";
+    let actualOperator = "";
+    let actualOperand2 = "";
+
+    if(numbersOnScreen !== undefined) {actualOperand1 = numbersOnScreen};
+    if(operator !== undefined) {actualOperator = operator};
+    if(operand !== undefined) {actualOperand2 = operand};
+    if (actualOperand1 === "" && actualOperator === "" && actualOperand2 === "") {
+        title.innerHTML = "Odin Calculator";
+    } else {
+        title.innerHTML = actualOperand1 + "\n" + actualOperator + "\n" + actualOperand2;
+    }
 };
